@@ -1,0 +1,19 @@
+A simple file server on top of Flask.
+(Flask-Uploads is a bit too complex for the use cases that I have).
+
+
+The app will read config options from the file pointed by the environment variable: FILE_SERVER_SETTINGS.
+So, you should set it before running the app (e.g., export FILE_SERVER_SETTINGS=config_file_path).
+
+
+There are a number of config options that you should provide (see default_config.py for more details):
+
+* UPLOAD_FOLDER_PATH: The directory location to save the uploaded file.
+
+* UPLOADED_FILE_NAME_KEY: The name attribute in <input type=file> tag.
+
+* FILE_NAME_SUFFIX_FUNCTION: Function to generate suffix for the saved filename. This is handy
+    when there is a possibility of name collision (e.g., two files with same name from
+    different users). Default is current second from unix epoch (so, as long as files
+    with same name are not being uploaded at exactly same time, they would not be
+    overloaded).
